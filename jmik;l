@@ -1,0 +1,11 @@
+# 
+kubectl get object object name -n namespace 
+kubectl get object object name -n namespace -o wide
+kubectl get object object name -n namespace -o yaml
+kubectl logs podname -n namespace
+kubectl describe podname -n namespace
+kubectl exec podname -n namespace
+kubectl delete object objectname -n namesapace
+kubectl apply -f filename -n namespace
+kubectl run podname  -p portNo
+

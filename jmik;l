@@ -1,11 +1,33 @@
-# 
-kubectl get object object name -n namespace 
-kubectl get object object name -n namespace -o wide
-kubectl get object object name -n namespace -o yaml
-kubectl logs podname -n namespace
-kubectl describe podname -n namespace
-kubectl exec podname -n namespace
-kubectl delete object objectname -n namesapace
-kubectl apply -f filename -n namespace
-kubectl run podname  -p portNo
+# kubernetes 리소스 지원정보
+kubectl explan pod 
 
+# pod 상세설명 
+kubectl logs [podname] -n [namespace]
+kubectl describe [podname] -n [namespace]
+- 해당 커맨드 두개 는 pod를 기반으로 정보를 가져오기때문에 Resource를 별도로 언급하지않아도됨
+
+# 네임스페이스 안에 있는 전체/리소스 목록 조회
+kubectl get [resource] [all/object name] -n [namespace] 
+
+# yaml파일로 작성한 Resource 실행
+kubectl apply -f filename -n [namespace]
+kubectl run [podname]  (-p / --port)= portNo
+
+# pod 접속
+kubectl exec -it [podname] -n [namespace] -- /bin/bash # 또는 /bin/sh
+
+# 현재 생성된 리소스 상세 확인
+kubectl get [resource] [object name] -n [namespace]
+
+# 현재생성된 리소스 정보 yaml형식으로 보기
+kubectl get [resource] [object name] -n [namespace] -o||--output yaml
+
+# 리소스 삭제
+kubectl delete [resource] [objectname] -n [namespace]
+- 네임스페이스의 경우 -n 이하의 명령어는필요없음 다만 삭제시 모든 내부  오브젝트 삭제
+
+# 리소스 수정
+kubectl edit [resource] [resoure name] -n [namespace]
+
+# 현재 파드 동작상태 실시간으로 확인하기
+watch kubectl get pods -n [namespace] -o wide
